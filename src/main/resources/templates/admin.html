@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="logout">
+</form>
+<hr>
+<table width="700" border="5">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>First_Name</th>
+        <th>Last_Name</th>
+        <th>Age</th>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Password</th>
+        <th>Operations</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="msg:${users}">
+        <td th:text="${msg.id}"/>
+        <td th:text="${msg.firstName}"/>
+        <td th:text="${msg.lastName}"/>
+        <td th:text="${msg.age}"/>
+        <td th:text="${msg.username}"/>
+        <td th:text="${msg.roles}"/>
+        <td th:text="${msg.password}"/>
+        <td>
+            <button>
+            <a th:href="@{/{id}/get(id=${msg.getId()})}">Create</a>
+            </button>
+            <form th:method="DELETE" th:action="@{/{id}(id=${msg.getId()})}"/>
+            <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<button>
+    <a href="/new">New user</a>
+</button>
+</body>
+</html>
