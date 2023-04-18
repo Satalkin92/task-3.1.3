@@ -8,7 +8,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -38,7 +38,7 @@ public class User implements UserDetails {
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles;
+    private Set<Role> roles;
 
     public User() {
     }
@@ -88,10 +88,10 @@ public class User implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 

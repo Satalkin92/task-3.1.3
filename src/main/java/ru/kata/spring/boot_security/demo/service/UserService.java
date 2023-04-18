@@ -23,6 +23,4 @@ public interface UserService extends UserDetailsService {
 
     List<User> getUsers();
 
-    void addRolesByUser(User user, String[] roles);
-
 }

@@ -32,8 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/user").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/**").hasRole("ADMIN")
-                .antMatchers("/index", "/", "/new").permitAll()
+                .antMatchers("/", "/new").hasRole("ADMIN")
+                .antMatchers("/index", "/reg/registration", "/reg").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().successHandler(successUserHandler)
@@ -52,4 +52,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
