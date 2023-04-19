@@ -26,8 +26,13 @@ public class RegistrationController {
         this.roleService = roleService;
     }
 
+    @GetMapping("/index")
+    public String getStartPage() {
+        return "index";
+    }
 
-    @PostMapping("/reg")
+
+    @PostMapping()
     public String registrationUser(@ModelAttribute("user") @Valid User user, @RequestParam("rolesList") String[] roles,
                           BindingResult br) {
         if (br.hasErrors()) {
@@ -37,7 +42,7 @@ public class RegistrationController {
         return "redirect:/login";
     }
 
-    @GetMapping("reg/registration")
+    @GetMapping("/registration")
     public String registrationForm(ModelMap model) {
         model.addAttribute("user", new User());
         model.addAttribute("allRoles", roleService.getAllRoles());
